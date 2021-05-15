@@ -15,8 +15,26 @@ public class BinarySearch {
         }
         return -1;
     }
+
+    static int binarySearchRecursive(int arr[], int start, int end, int searchElement)
+    {
+        if (end >= start) {
+            int mid = start + (end - start) / 2;
+  
+            if (arr[mid] == searchElement)
+                return mid;
+  
+            if (arr[mid] > searchElement)
+                return binarySearchRecursive(arr, start, mid - 1, searchElement);
+  
+            return binarySearchRecursive(arr, mid + 1, end, searchElement);
+        }
+  
+        return -1;
+    }
+
     public static void main(String[] args) throws Exception {
         int[] a = {1, 4, 8, 10, 25};
-        System.out.println(binarySearchIterative(a, 1));
+        System.out.println(binarySearchRecursive(a, 0, a.length - 1, 8));
     }
 }
